@@ -6,5 +6,4 @@ class Activity < ActiveRecord::Base
 	# chnage #002 added next 1 lines
 	belongs_to :user
 
-
 end
