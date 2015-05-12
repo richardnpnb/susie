@@ -7,6 +7,10 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+
+# change #003 added next 1 lines
+gem 'audited-activerecord', "~> 4.0"
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
