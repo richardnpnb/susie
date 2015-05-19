@@ -4,8 +4,12 @@ class ActivitiesController < ApplicationController
   respond_to :html
 
   def index
-    # chnage #002 - line was: @activities = Activity.all
-    @activities = current_user.activities.all
+    # chnage #002 - line was: 
+    if env['warden'].user.role == 'admin'
+      @activities = Activity.all
+    else
+      @activities = current_user.activities.all
+    end
     respond_with(@activities)
   end
 

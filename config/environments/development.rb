@@ -38,6 +38,8 @@ Rails.application.configure do
   }
   # ActionMailer Config
   #config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+
   # For nitrous
   config.action_mailer.default_url_options = { :host => '0.0.0.0:3000' }
   config.action_mailer.delivery_method = :smtp
@@ -45,8 +47,7 @@ Rails.application.configure do
   # Send email in development mode?
   config.action_mailer.perform_deliveries = true
 
-
-  # Asset digests allow you to set far-future HTTP expiration dates on all assets,
+    # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
 
