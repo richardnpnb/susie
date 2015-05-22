@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 
-
+  # change #004 added next 1 lines
+  audited :allow_mass_assignment => true
+    
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
 

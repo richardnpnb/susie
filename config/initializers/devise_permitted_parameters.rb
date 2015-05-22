@@ -9,7 +9,9 @@ module DevisePermittedParameters
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
-    devise_parameter_sanitizer.for(:account_update) << :name
+    # #004 appended "<< job_title" to next line
+    devise_parameter_sanitizer.for(:account_update) << :name << :job_title
+
   end
 
 end
