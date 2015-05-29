@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Activity Id</th>
       <th>Activity name</th>
       <th>Activity type</th>
       <th>Parent activity</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @activities.each do |activity| %>
       <tr>
+        <td><%= activity.id %></td>
         <td><%= activity.name %></td>
         <td><%= activity.activity_type_id %></td>
         <td><%= activity.parent_id %></td>

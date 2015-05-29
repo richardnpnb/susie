@@ -32,12 +32,16 @@
   <% end %>
 
   <!-- new code after #00425 -->
-  <%= f.semantic_errors %>
+  <!-- <%= f.semantic_errors %> -->
   <div class="field">
     <%= f.inputs do %>
       <%= f.input :name, :hint => "Enter the activity name2" %>
       <%= f.input :activity_type, :include_blank => false %>
-      <%= f.input :parent_id %>
+      <!-- #00440 next 2 lines - setting up self referencing in formtastic 
+      The :parent_activity & actvities data types has been set up in file ..\models\activity.rb -->
+      <%= f.input :parent_activity, :as => :select, :label => "Parent Activity", :label_method => :name, :value_method => :parent_id, :include_blank => true %>
+      <%= f.input :activities, :as => :select, :label => "Children (Read Only)", :label_method => :name, :value_method => :id, :input_html => { :disabled => true } %>
+      <%= f.input :activities, :hint => "Hint", :as => :datalist, :collection => Activity.pluck(:name), :label => "Children List (Read Only)" %>
     <% end %>
   </div>
   <div class="actions">
