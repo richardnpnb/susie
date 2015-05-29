@@ -1,4 +1,8 @@
 /*
+ * added next two lines #00425
+ *= require formtastic-bootstrap
+ *= require my_formtastic_changes
+
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -12,4 +16,5 @@
  *
  *= require_tree .
  *= require_self
+
  */

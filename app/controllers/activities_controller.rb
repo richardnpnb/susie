@@ -4,12 +4,7 @@ class ActivitiesController < ApplicationController
   respond_to :html
 
   def index
-    # chnage #002 - line was: 
-    if env['warden'].user.role == 'admin'
-      @activities = Activity.all
-    else
-      @activities = current_user.activities.all
-    end
+    @activities = Activity.all
     respond_with(@activities)
   end
 
@@ -18,8 +13,7 @@ class ActivitiesController < ApplicationController
   end
 
   def new
-    # chnage #002 - line was: @activity = Activity.new
-    @activity = current_user.activities.build
+    @activity = Activity.new
     respond_with(@activity)
   end
 
@@ -27,14 +21,13 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    # chnage #002 - line was: @activity = Activity.new(activity_params)
-    @activity = current_user.activities.build(activity_params)
-    flash[:notice] = 'Activity was successfully created.' if @activity.save
+    @activity = Activity.new(activity_params)
+    @activity.save
     respond_with(@activity)
   end
 
   def update
-    flash[:notice] = 'Activity was successfully updated.' if @activity.update(activity_params)
+    @activity.update(activity_params)
     respond_with(@activity)
   end
 
@@ -49,6 +42,6 @@ class ActivitiesController < ApplicationController
     end
 
     def activity_params
-      params.require(:activity).permit(:activity_name)
+      params.require(:activity).permit(:activity_name, :activity_type_id, :parent_activity_id)
     end
 end

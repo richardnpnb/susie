@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html>
+<!-- #00425 added next xmlns xml:lang and lang values to html tag -->
+<html xmlns="http://www.w3.org/1999.xtml" xml:lang="en" lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Rails Devise Pundit" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Devise Pundit" %>">
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
