@@ -15,7 +15,7 @@
   <tbody>
     <% @activities.each do |activity| %>
       <tr>
-        <td><%= activity.activity_name %></td>
+        <td><%= activity.name %></td>
         <td><%= activity.activity_type_id %></td>
         <td><%= activity.parent_activity_id %></td>
         <td><%= link_to 'Show', activity %></td>

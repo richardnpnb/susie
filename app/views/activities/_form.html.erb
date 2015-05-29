@@ -15,8 +15,8 @@
   <!-- original code before #00425 -->
   <% if false %> 
     <div class="field">
-      <%= f.label :activity_name %><br>
-      <%= f.text_field :activity_name %>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
     </div>
     <div class="field">
       <%= f.label :activity_type_id %><br>
@@ -35,7 +35,7 @@
   <%= f.semantic_errors %>
   <div class="field">
     <%= f.inputs do %>
-      <%= f.input :activity_name, :hint => "Enter the activity name" %>
+      <%= f.input :name, :hint => "Enter the activity name2" %>
       <%= f.input :activity_type, :include_blank => false %>
     <% end %>
   </div>
