@@ -1,5 +1,10 @@
 class ActivitiesController < ApplicationController
+  
+
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
+
+  before_filter :authenticate_user!
+  #after_action :verify_authorized
 
   respond_to :html
 
