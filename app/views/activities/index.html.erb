@@ -1,6 +1,6 @@
-<p id="notice"><%= notice %></p>
+<!-- #005 removed as duplicate messages : <p id="notice"><%= notice %></p> -->
 
-<h1>Listing Activities</h1>
+<h1>Personal Activities</h1>
 
 <table>
   <thead>
@@ -9,6 +9,8 @@
       <th>Activity name</th>
       <th>Activity type</th>
       <th>Parent activity</th>
+      <!--- #00441 - added col heading for User -->
+      <th>Added by (User) </th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,8 +20,12 @@
       <tr>
         <td><%= activity.id %></td>
         <td><%= activity.name %></td>
-        <td><%= activity.activity_type_id %></td>
-        <td><%= activity.parent_id %></td>
+        <td><%= activity.activity_type.name %></td>
+        <!-- #00441 line below was <td><%= activity.parent_id %></td> 
+        add try method to replace NULL or NIL values -->
+        <td><%= activity.parent_activity.try(:name) %></td>
+        <!--- #00441 - added field for User.email-->
+        <td><%= activity.user.email %></td>
         <td><%= link_to 'Show', activity %></td>
         <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
         <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>

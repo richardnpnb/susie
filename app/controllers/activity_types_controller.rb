@@ -24,15 +24,34 @@ class ActivityTypesController < ApplicationController
   def edit
   end
 
+
   def create
     @activity_type = ActivityType.new(activity_type_params)
-    flash[:notice] = 'ActivityType was successfully created.' if @activity_type.save
-    respond_with(@activity_type)
+    # #005 - replaced this 2 line block
+    #    flash[:notice] = 'ActivityType was successfully created.' if @activity_type.save
+    #    respond_with(@activity_type)
+    # with this block:
+    respond_to do |format|
+      if @activity_type.save
+        format.html { redirect_to activity_types_url, notice: 'ActivityType was successfully created.' }
+      else
+        format.html { render action: "new" }
+      end
+    end
   end
 
   def update
-    flash[:notice] = 'ActivityType was successfully updated.' if @activity_type.update(activity_type_params)
-    respond_with(@activity_type)
+    # #005 - replaced this 2 line block
+    #  flash[:notice] = 'ActivityType was successfully updated.' if @activity_type.update(activity_type_params)
+    #  respond_with(@activity_type)
+    # with this block:
+    respond_to do |format|
+      if @activity_type.update(activity_type_params)
+        format.html { redirect_to activity_types_url, notice: 'ActivityType was successfully updated.' }
+      else
+        format.html { render action: "new" }
+      end
+    end
   end
 
   def destroy

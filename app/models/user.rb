@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # chnage for #002 added next line
+  # change for #00441 added next line
   has_many :activities
 
 

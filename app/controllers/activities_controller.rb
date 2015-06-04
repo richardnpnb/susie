@@ -9,7 +9,14 @@ class ActivitiesController < ApplicationController
   respond_to :html
 
   def index
-    @activities = Activity.all
+    
+    # change #00441 - line was: @activities = Activity.all
+    if env['warden'].user.role == 'admin'
+      @activities = Activity.all
+    else
+      @activities = current_user.activities.all
+    end
+    
     respond_with(@activities)
   end
 
@@ -18,7 +25,11 @@ class ActivitiesController < ApplicationController
   end
 
   def new
-    @activity = Activity.new
+    # change #00441 - line was: @activity = Activity.new
+    @activity = current_user.activities.build
+    # change #00441 - added line to set deafult value of Activity_Type to be "User Defined"
+    @activity.activity_type_id = "2" # set a default value to be "UserDefined" (=2 in susie_development db)
+    @activity.parent_id = "1" # set a default value to be "Root" (=1 in susie_development db)
     respond_with(@activity)
   end
 
@@ -26,14 +37,34 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    @activity = Activity.new(activity_params)
-    @activity.save
-    respond_with(@activity)
+    # change #00441 - line was: @activity = Activity.new(activity_params)
+    @activity = current_user.activities.build(activity_params)
+    # #005 - replaced this 2 line block
+    #    @activity.save
+    #    respond_with(@activity)
+    # with this block:
+    respond_to do |format|
+      if @activity.save
+        format.html { redirect_to activities_url, notice: 'Activity was successfully created.' }
+      else
+        format.html { render action: "new" }
+      end
+    end
   end
+
 
   def update
     @activity.update(activity_params)
-    respond_with(@activity)
+    # #005 - replaced this 1 line block
+    #    respond_with(@activity)
+    # with this block:
+    respond_to do |format|
+      if @activity.update(activity_params)
+        format.html { redirect_to activities_url, notice: 'Activity was successfully updated.' }
+      else
+        format.html { render action: "new" }
+      end
+    end
   end
 
   def destroy
@@ -47,6 +78,7 @@ class ActivitiesController < ApplicationController
     end
 
     def activity_params
-      params.require(:activity).permit(:name, :activity_type_id, :parent_id)
+      # change #00441 - added :user_id to next line
+      params.require(:activity).permit(:name, :activity_type_id, :parent_id, :user_id)
     end
 end
