@@ -7,3 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
+
+activity_types = ActivityType.create([{ name: 'System2' }])
+Activity.create(name: 'Root2', activity_type: activity_types.first)
