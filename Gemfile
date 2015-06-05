@@ -9,9 +9,13 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
 # change #00425 added next 1 lines
+#gem 'formtastic'
 gem 'formtastic-bootstrap'
 # change #003 added next 1 lines
 gem 'audited-activerecord', "~> 4.0"
+
+# #00443 - Adding ActiveAdmin again
+gem 'activeadmin', github: 'activeadmin'
 
 group :development, :test do
   gem 'byebug'

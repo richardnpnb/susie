@@ -1,7 +1,5 @@
 /*
- * added next two lines #00425
- *= require formtastic-bootstrap
- *= require my_formtastic_changes
+
 
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,6 +11,10 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
+ *
+ * added next two lines #00425
+ *= require formtastic-bootstrap
+ *= require my_formtastic_changes
  *
  *= require_tree .
  *= require_self

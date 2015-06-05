@@ -11,12 +11,14 @@ class ActivitiesController < ApplicationController
   def index
     
     # change #00441 - line was: @activities = Activity.all
-    if env['warden'].user.role == 'admin'
-      @activities = Activity.all
-    else
-      @activities = current_user.activities.all
-    end
-    
+    # #00443 - following IF block  gave an error afetr install of activeadmin
+    # Therefore always show for current user (else command)
+    #   if env['warden'].user.role == 'admin'
+    #     @activities = Activity.all
+    #   else
+    #     @activities = current_user.activities.all
+    #   end
+    @activities = current_user.activities.all
     respond_with(@activities)
   end
 

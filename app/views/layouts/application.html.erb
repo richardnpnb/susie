@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Rails Devise Pundit" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Devise Pundit" %>">
-<!-- #00425 need to add som,e Fromtactic stuff here see Fromtastic RailsCast vid Part 1-->
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+<!-- #00425 need to add som,e Fromtactic stuff here see Fromtastic RailsCast vid Part 1 - line was: <
+%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+cache "base" groups all css files in production and reduces # ofn browser connections
+GOT AN ERROR so check out http://stackoverflow.com/questions/22970573/asset-filtered-out-and-will-not-be-served-add-config-assets-precompile -->
+    <%= stylesheet_link_tag 'application', 'formtastic', 'my_formtastic_changes', :cache => "base", media: 'all', 'data-turbolinks-track' => true %>
     
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
