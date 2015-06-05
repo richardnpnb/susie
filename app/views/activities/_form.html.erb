@@ -41,8 +41,12 @@
       <!-- #00440 next 2 lines - setting up self referencing in formtastic 
       The :parent_activity & actvities data types has been set up in file ..\models\activity.rb -->
       <%= f.input :parent_activity, :as => :select, :label => "Parent Activity", :label_method => :name, :value_method => :parent_id, :include_blank => true %>
-      <%= f.input :activities, :as => :select, :label => "Children (Read Only)", :label_method => :name, :value_method => :id, :input_html => { :disabled => true } %>
-      <%= f.input :activities, :as => :datalist, :collection => Activity.pluck(:name), :label => "Children List (Read Only)" %>
+
+      <%= f.input :activities, :as => :select, :label => "Children Activities (Read Only)", :label_method => :name, :value_method => :id, :input_html => { :disabled => true } %> 
+      <!-- remove next 2 fields, I was just playing: <
+      <
+      %= f.input :activities, :as => :datalist, :collection => Activity.pluck(:name), :label => "Children List (Read Only)" %>
+      -->
     <% end %>
   </div>
   <div class="actions">
