@@ -8,5 +8,5 @@
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
 
-activity_types = ActivityType.create([{ name: 'System2' }])
-Activity.create(name: 'Root2', activity_type: activity_types.first)
+activity_types = ActivityType.create([{ name: 'System' }, { name: 'User Defined' }])
+Activity.create(name: 'Root', activity_type: activity_types.first)
