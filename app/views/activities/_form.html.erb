@@ -1,5 +1,6 @@
 <!-- added "semantic_" to line below #00425 -->
 <%= semantic_form_for(@activity) do |f| %>
+  
   <% if @activity.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
@@ -12,7 +13,7 @@
     </div>
   <% end %>
 
-  <!-- original code before #00425 -->
+  <!-- original form code before formtastic #00425 -->
   <% if false %> 
     <div class="field">
       <%= f.label :name %><br>
@@ -31,11 +32,11 @@
     </div>
   <% end %>
 
-  <!-- new code after #00425 -->
-  <!-- duplcaite messages so removed 
+  <!-- new code block after formtastic #00425 -->
+  <!-- duplcaite messages so removed this next line
   <%= f.semantic_errors %> -->
-  <div class="field">
-    <%= f.inputs do %>
+  <%= f.inputs do %>
+    <div class="field">
       <%= f.input :name, :hint => "Enter the activity name" %>
       <%= f.input :activity_type, :include_blank => false %>
       <!-- #00440 next 2 lines - setting up self referencing in formtastic 
@@ -43,17 +44,18 @@
       <%= f.input :parent_activity, :as => :select, :label => "Parent Activity", :label_method => :name, :value_method => :parent_id, :include_blank => true %>
 
       <%= f.input :activities, :as => :select, :label => "Children Activities (Read Only)", :label_method => :name, :value_method => :id, :input_html => { :disabled => true } %> 
-      <!-- remove next 2 fields, I was just playing: <
+      <!-- remove next field, I was just playing: <
       <
       %= f.input :activities, :as => :datalist, :collection => Activity.pluck(:name), :label => "Children List (Read Only)" %>
       -->
-    <% end %>
-  </div>
-  <div class="actions">
-    <%= f.actions do %>
-      <%= f.action :submit %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
+  <%= f.actions do %>
+    <div class="actions">
+      <%= f.action :submit %>
+    </div>
+  <% end %>
+  
 
 <% end %>

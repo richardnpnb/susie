@@ -14,7 +14,7 @@
     </div>
   <% end %>
 
-  <!-- original code before #00425 -->
+  <!-- original code before formtastic #00425 -->
   <% if false %> 
         <div class="field">
       <%= f.label :name %><br>
@@ -25,17 +25,17 @@
     </div>
   <% end %>
 
-  <!-- New code for #00425 -->
+  <!-- New code for #00425 formtastic-->
   <!-- <%= f.semantic_errors %> -->
-  <div class="field">
-    <%= f.inputs do %>
+  <%= f.inputs do %>
+    <div class="field">
       <%= f.input :name,   :hint => "Enter the activity type name" %>
-    <% end %>
-  </div>
-  <div class="actions">
-    <%= f.actions do %>
+    </div>
+  <% end %>
+  <%= f.actions do %>
+    <div class="actions">
       <%= f.action :submit %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
   
 <% end %>

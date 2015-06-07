@@ -36,18 +36,31 @@ Rails.application.configure do
     user_name: Rails.application.secrets.email_provider_username,
     password: Rails.application.secrets.email_provider_password
   }
-  # ActionMailer Config
-  #config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  
+  # ActionMailer Configs:
+  # 1a. Dev
+  # in Ubuntu VM set env variables using: % export GMAIL_USERNAME="asfd@asfd.com"
+  # in Ubuntu VM set env variables using: % export GMAIL_PASSWORD="asfdasfdaf"
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  # 1b. Dev
+  # For Mailcatcher on Unbuntu uncomment this
   config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
-
-  # For nitrous
+  # 2. Test
+  # For nitrous - comment the above
+  # in Nitrous set env variables using: % export GMAIL_USERNAME="asfd@asfd.com"
+  # in Nitrous set env variables using: % export GMAIL_PASSWORD="asfasfaf"
   config.action_mailer.default_url_options = { :host => '0.0.0.0:3000' }
+  
+  #3. Heroku see Heroku Deployment
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   # Send email in development mode?
   config.action_mailer.perform_deliveries = true
 
-    # Asset digests allow you to set far-future HTTP expiration dates on all assets,
+  
+
+  # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
 
