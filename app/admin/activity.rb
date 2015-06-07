@@ -1,5 +1,12 @@
 ActiveAdmin.register Activity do
 
+csv do
+	column :id
+	column :name
+	column :activity_type_id
+	column :parent_id
+end
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #

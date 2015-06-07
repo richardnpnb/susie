@@ -10,3 +10,5 @@ puts 'CREATED ADMIN USER: ' << user.email
 
 activity_types = ActivityType.create([{ name: 'System' }, { name: 'User Defined' }])
 Activity.create(name: 'Root', activity_type: activity_types.first)
+Activity.create(name: 'IT', parent_id: '1', activity_type: activity_types.first)
+Activity.create(name: 'Sales', parent_id: '1', activity_type: activity_types.first)
