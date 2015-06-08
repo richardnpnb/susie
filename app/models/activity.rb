@@ -1,5 +1,10 @@
 class Activity < ActiveRecord::Base
 
+validates_presence_of :name
+
+	# added line below #00425 for auditing records
+	audited :allow_mass_assignment => true  
+
 	# added line below #00425
 	belongs_to :activity_type
 	
@@ -11,7 +16,5 @@ class Activity < ActiveRecord::Base
 	# http://guides.rubyonrails.org/association_basics.html
 	belongs_to :parent_activity, :foreign_key => "parent_id", :class_name => "Activity"
     has_many :activities, :foreign_key => "parent_id"
-
-	validates_presence_of :name
 
 end
